@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+/* props.children – sending content from different components */
 
+function Son(props) {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{ background: "lightgreen", padding: "10px", marginBottom: "10px" }}>
+      <h2>Son</h2>
+      <div>{props.children}</div>
+    </div>
+  );
 }
 
-export default App
+function Daughter(props) {
+  return (
+    <div style={{ background: "orangered", padding: "10px" }}>
+      <h2>Daughter</h2>
+      <div>{props.children}</div>
+    </div>
+  );
+}
+
+export default function Parent() {
+  return (
+    <div>
+      <Son>
+        <p>
+          Written in parent component<br />
+          but displayed in Son component
+        </p>
+      </Son>
+
+      <Daughter>
+        <p>
+          Written in parent component<br />
+          but displayed in Daughter component
+        </p>
+      </Daughter>
+    </div>
+  );
+}
