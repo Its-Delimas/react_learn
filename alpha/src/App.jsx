@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+/*React multiple Inputs */
 export default function MyForm() {
   const [inputs, setInputs] = useState({ firstname: "", lastname: "" });
 
