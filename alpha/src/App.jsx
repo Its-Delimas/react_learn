@@ -1,29 +1,21 @@
-import { useState } from 'react';
+import { useState } from "react";
 import './App.css'
 
-function MyForm() {
-  const [name, setName] = useState("");
+export default function main (){
+  const[myCar ,setMyCar]=useState("Volvo")
 
-  function handleChange(e) {
-    setName(e.target.value);
-  }
+    const handleChange = (event) =>{
+      setMyCar (event.target.value)
+    }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    alert(name);
-  }
+    return (
+      <form>
+        <select value={myCar} onChange={handleChange}>
+            <option value="Ford">Ford</option>
+            <option value="Volvo">Volvo</option>
+            <option value="Flat">Flat</option>
+        </select>
+      </form>
+    )
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>Enter your name:
-        <input
-          type="text" 
-          value={name}
-          onChange={handleChange}
-        />
-      </label>
-      <input type="submit" />
-    </form>
-  )
 }
-export default MyForm;
